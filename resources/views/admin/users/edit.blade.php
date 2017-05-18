@@ -9,8 +9,7 @@
 
         <img src="{{$user->photo ? $user->photo->file : '/images/placeholder.png'}}" alt="" class="img-responsive img-rounded">
 
-        <br>
-        @include('includes.form_error')
+
     </div>
 
     <div class="col-sm-9">
@@ -49,10 +48,25 @@
         </div>
 
         <div class="form-group">
-            {!! Form::submit('Create User',['class'=>'btn btn-primary']) !!}
+            {!! Form::submit('Create User',['class'=>'btn btn-primary col-sm-2']) !!}
         </div>
 
         {!! Form::close() !!}
+
+
+
+        {!! Form::open(['method'=>'DELETE', 'action'=>['AdminUsersController@destroy',$user->id] ]) !!}
+
+            <div class="form-group">
+
+                {!! Form::submit('Delete User', ['class'=>'btn btn-danger col-sm-2 pull-right']) !!}
+
+            </div>
+
+
+        {!! Form::close() !!}
+
+
 
     </div>
 @endsection
